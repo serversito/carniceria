@@ -1,0 +1,111 @@
+body {
+    background: linear-gradient(#e0e0e0, #d3d3d3, #a2a2a2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+ 
+
+.app-container {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+ 
+.app-title{
+    margin: 0 0 25px 0;
+    color: #3d2739;
+    font-size: 24px;
+}
+
+ 
+.input-group {
+    margin-bottom: 20px;
+}
+ 
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #aaad95;
+    font-size: 14px;
+    font-weight: 600;
+}
+ 
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 2px solid #e3e8f0;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #f7fafc;
+    box-sizing: border-box;
+    transition: all 0.3 ease;
+}
+ 
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #dedcbb;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(220, 225, 178, 0.985);
+}
+ 
+.btn-calc{
+    width: 100%;
+    padding: 14px;
+    background-color: #686798;
+    color: #e8e9da;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+ 
+.btn-calc:hover{
+    background-color: #000000;
+}
+ 
+.btn-calc:active{
+    transform: scale(0.98);
+}
+ 
+.result-box{
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #ccc7ce;
+    border-left: 5px solid #787678;
+    border-radius: 4px;
+    transition: opacity 0.4s ease;
+}
+ 
+.result-box h4{
+    margin:0 0 5px 0;
+    color:#130217
+}
+ 
+.result-box p {
+    margin: 0;
+    color: #846e80;
+    font-size: 16px;
+}
+ 
+#resultado {
+    font-weight: bold;
+    color: #000000;
+    font-size: 18px;
+}
+ 
+.hidden {
+    display: none;
+}

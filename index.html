@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <h2 class="app-title">Calculadora</h2>
+
+        <form id="number-form">
+
+            <div class="input-group">
+                <label for="operacion">Operación</label>
+                <select id="operacion" required>
+                    <option value="" disabled selected>Selecciona una operación...</option>
+                    <option value="+">Suma           - A+B</option>
+                    <option value="-">resta          - A-B</option>
+                    <option value="*">multiplicación - AxB</option>
+                    <option value="/">división       - A/B</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="valores">Valores</label>
+                <input type="number" id="numero0"  step="1" required>
+                <input type="number" id="numero1"  step="1" required>
+            </div>
+
+            <button type="submit" class="btn-calc">Calcular</button>
+        </form>
+
+        <div id="resultado-box" class="result-box hidden">
+            <p>El resultado es: <span id="resultado">0</span>.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
