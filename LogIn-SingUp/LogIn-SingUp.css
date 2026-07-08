@@ -52,11 +52,11 @@ header{
 .formulario-title{
     margin-top: 0;
     margin-bottom: 50px;
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
     color: #0f1218;
     font-family: "Atomicaboy";
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .formulario-group{
@@ -156,14 +156,14 @@ input:focus{
     left: 0;
     width: 100%;
     height: calc(100% - 140px);
-    z-index: -1;
+    z-index: 1;
 }
 
 .bg-svg{
     position: absolute;
     opacity: 0.18;
-    pointer-events: none;
-    z-index: -1;
+    z-index: 1;
+    cursor: pointer;
 }
 
 .c1{

@@ -18,7 +18,7 @@
         <div class="user-info">
 
             <a href="\User\user.html" class="user-photo">
-                <img src="\!Resource\Images\image 9(11).png" alt="Foto de perfil">
+                <img src="\!Resource\Images\foto-perfil.jpeg" alt="Foto de perfil">
             </a>
 
             <div class="user-text">
@@ -58,7 +58,7 @@
 
     <main>
         <section class="productos">
-            <h2>Inventario de productos</h2>
+            <h2>Inventario</h2>
 
             <table>
                 <thead>
@@ -77,7 +77,7 @@
                 <tbody id="tabla-productos">
 
                     <tr>
-                        <td><img src="\!Resource\Images\placeholder.jpg" class="imagen-producto"></td>
+                        <td><img src="\!Resource\Images\placeholder-1.jpg" class="imagen-producto"></td>
                         <td>Carne de res</td>
                         <td> 10 kg</td>
                         <td>$100</td>
@@ -105,16 +105,19 @@
 
             <input type="text" id="prod-precio" placeholder="Precio">
 
-            <input type="date" id="prod-caducidad">
+            <input type="text" id="prod-caducidad" placeholder="Fecha de caducidad" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'">
 
             <input type="text" id="prod-proveedor" placeholder="Proveedor">
             
-            <input type="text" id="prod-categoria" placeholder="Categoría">
+            <select id="prod-categoria">
+                <option value="" disabled selected hidden>Selecciona una categoría</option>
+                <option value="Carne">Carne</option>
+                <option value="Despensa">Despensa</option>
+                <option value="Embutidos">Embutidos</option>
+                <option value="Frutas y verduras">Frutas y verduras</option>
+            </select>
 
-            <textarea
-                id="prod-descripcion"
-                placeholder="Descripción">
-            </textarea>
+            <textarea id="prod-descripcion" placeholder="Descripción"></textarea>
 
             <div class="registro-buttons">
 

@@ -1,11 +1,11 @@
 @font-face{
     font-family: "Atomicaboy";
-    src: url("/fonts/Atomicaboy.ttf");
+    src: url("/!Resource/Fonts/Atomicaboy.ttf");
 }
 
 @font-face{
     font-family: "Ms sans serif";
-    src: url("/fonts/micross.ttf");
+    src: url("/!Resource/Fonts/micross.ttf");
 }
 
 body{
@@ -40,14 +40,14 @@ header{
     height:170px;
     object-fit:cover;
     border:4px solid #d7e1e1;
-    border-radius: 10px;
+    border-radius: 12px;
     transition:.2s;
 }
 
 .usuario-container h2{
     margin:18px 0 8px;
     font-family:"Atomicaboy";
-    letter-spacing:1.5px;
+    letter-spacing:2px;
     color:#000000;
     font-size: 30px;
 }
@@ -69,6 +69,8 @@ header{
     display: flex;
     justify-content: end;
     align-items: center;
+    position: relative;
+    z-index: 10;
 }
 
 .menu-container ul{
@@ -182,14 +184,12 @@ main{
     left: 0;
     width: 100%;
     height: calc(100% - 140px);
-    z-index: -1;
 }
 
 .bg-svg{
     position: absolute;
     opacity: 0.18;
-    pointer-events: none;
-    z-index: -1;
+    cursor: pointer;
 }
 
 .c1{

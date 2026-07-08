@@ -20,9 +20,9 @@ function closeRegistro(){
 const productosIniciales = [
     {
         id: "1",
-        imagen: "\\!Resource\\Images\\placeholder.jpg",
+        imagen: "\\!Resource\\Images\\placeholder-1.jpg",
         nombre: "Carne de res",
-        cantidad: "10 kg",
+        cantidad: "10 KG",
         precio: "$100",
         caducidad: "2026-07-14",
         descripcion: "corte picaña, marmoleado ligereo, primer refrigerador",
@@ -30,8 +30,8 @@ const productosIniciales = [
         categoria: "Carne"
     },
     {
-        id: "5",
-        imagen: "\\!Resource\\Images\\placeholder-5.jpg",
+        id: "2",
+        imagen: "\\!Resource\\Images\\placeholder-2.jpg",
         nombre: "Carne de pollo",
         cantidad: "4 kg",
         precio: "$80",
@@ -41,36 +41,36 @@ const productosIniciales = [
         categoria: "Carne"
     },
     {
-        id: "6",
-        imagen: "\\!Resource\\Images\\placeholder-6.jpg",
+        id: "4",
+        imagen: "\\!Resource\\Images\\placeholder-4.jpg",
         nombre: "Arroz",
         cantidad: "2 u",
         precio: "$20",
         caducidad: "2026-11-02",
         descripcion: "bolsa de 500g, marca verde valle, primer estante izquierda",
-        proveedor: "Distribuidora Central",
+        proveedor: "no especificado/independiente",
         categoria: "Despensa"
     },
     {
-        id: "3",
-        imagen: "\\!Resource\\Images\\placeholder-3.jpg",
-        nombre: "cebolla",
+        id: "7",
+        imagen: "\\!Resource\\Images\\placeholder-7.jpg",
+        nombre: "Cebolla",
         cantidad: "2 kg",
         precio: "$30",
         caducidad: "2026-08-11",
         descripcion: "tamaño mediano, sin tallo, segundo estante derecha",
-        proveedor: "Frutas Locales",
+        proveedor: "no especificado/independiente",
         categoria: "Frutas y verduras"
     },
     {
-        id: "2",
-        imagen: "\\!Resource\\Images\\placeholder-2.jpg",
+        id: "5",
+        imagen: "\\!Resource\\Images\\placeholder-5.jpg",
         nombre: "Salchicha",
         cantidad: "12 kg",
         precio: "$60",
         caducidad: "2026-07-21",
         descripcion: "polaca, marca chimex, primer refrigerador",
-        proveedor: "Embutidos Fox",
+        proveedor: "no especificado/independiente",
         categoria: "Embutidos"
     }
 ];
@@ -89,7 +89,7 @@ function updateTabla() {
     tabla.innerHTML = "";
 
     productos.forEach((prod, index) => {
-        const imgSrc = prod.imagen || "\\!Resource\\Images\\placeholder.jpg";
+        const imgSrc = prod.imagen || "\\!Resource\\Images\\placeholder-1.jpg";
         
         tabla.innerHTML += `
             <tr>
@@ -115,19 +115,23 @@ function saveProducto(){
     const cantidad = document.getElementById("prod-cantidad").value;
     const precio = document.getElementById("prod-precio").value;
     const caducidad = document.getElementById("prod-caducidad").value;
-    const proveedor = document.getElementById("prod-proveedor").value;
+    let proveedor = document.getElementById("prod-proveedor").value;
     const categoria = document.getElementById("prod-categoria").value;
     const descripcion = document.getElementById("prod-descripcion").value;
  
-    if(!id || !nombre || !cantidad || !precio || !caducidad || !proveedor || !categoria){
-        alert("Completa todos los campos obligatorios (incluyendo Proveedor y Categoría).");
+    if(!id || !nombre || !cantidad || !precio || !caducidad || !categoria){
+        alert("Completa todos los campos.");
         return;
+    }
+
+    if (proveedor === "") {
+        proveedor = "no especificado/independiente";
     }
 
     let rutaImagen = "";
     
     if (id === "1" || isNaN(id)) {
-        rutaImagen = "\\!Resource\\Images\\placeholder.jpg";
+        rutaImagen = "\\!Resource\\Images\\placeholder-1.jpg";
     } else {
         rutaImagen = `\\!Resource\\Images\\placeholder-${id}.jpg`;
     }
@@ -163,15 +167,23 @@ function cleanRegistro() {
     document.getElementById("prod-descripcion").value = "";
 }
 
-
 function eliminarProducto(index) {
     if (confirm("¿Estás seguro de que deseas eliminar este producto del inventario?")) {
         const productos = JSON.parse(localStorage.getItem("inventario")) || [];
         
-        productos.splice(index, 1);
+        const tabla = document.getElementById("tabla-productos");
+        const categoriaFiltro = tabla ? tabla.getAttribute("data-categoria") : null;
         
-        localStorage.setItem("inventario", JSON.stringify(productos));
+        let productosFiltrados = categoriaFiltro 
+            ? productos.filter(prod => prod.categoria.toLowerCase() === categoriaFiltro.toLowerCase())
+            : productos;
+
+        const productoAEliminar = productosFiltrados[index];
+
+        const nuevoArregloMaestro = productos.filter(prod => prod.id !== productoAEliminar.id);
         
-       updateTabla();
+        localStorage.setItem("inventario", JSON.stringify(nuevoArregloMaestro));
+        
+        actualizarTabla();
     }
 }
