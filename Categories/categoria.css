@@ -1,0 +1,154 @@
+@font-face{
+    font-family: "Youthan";
+    src: url("/!Resource/Fonts/Youthan.ttf");
+}
+@font-face{
+    font-family: "Ms sans serif";
+    src: url("/!Resource/Fonts/Micross.ttf");
+}
+
+body{
+    background-color: #f1ebd5;
+    font-family: "Ms sans serif";
+    margin: 0;
+}
+
+header{
+    height: 120px;
+    background-color: #b13935;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.logo img{
+    height: 100px;
+    user-select: none;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-photo{
+    display: flex;
+    text-decoration: none;
+}
+
+.user-photo img{
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border: 4px solid #FFFFFF;
+    border-radius: 10px;
+    transition: .1s ease;
+    user-select: none;
+}
+
+.user-photo:hover img{
+    border-color: #d7e1e1;
+    transform: scale(1.1);
+}
+
+.user-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    user-select: none;
+}
+
+.user-text a{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: "Youthan";
+    letter-spacing: 1.5px;
+    font-size: 24px;
+}
+
+.user-text a:hover{
+    color: #d7e1e1;
+}
+
+.user-role{
+    width: fit-content;
+    padding: 4px 10px;
+    background-color: #6b8e8a;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: "Ms sans serif";
+    user-select: none;
+}
+
+.menu-container{
+    height: 55px;
+    background-color: #d7e1e1;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.menu-container ul{
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    margin: 0;
+    padding-right: 50px;
+}
+
+.menu-container img{
+    height: 35px;
+    user-select: none;
+}
+
+main{
+    padding: 40px 90px;
+}
+
+.productos h2{
+    color: #b13935;
+    font-family: "Youthan";
+    letter-spacing: 1.5;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    user-select: none;
+    font-size: 30px;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+}
+
+th{
+    background-color: #EEE0CE;
+    text-align: left;
+    padding: 14px;
+    border: 2px solid #cfc6b9;
+    user-select: none;
+}
+
+td{
+    padding: 14px;
+    border: 2px solid #cfc6b9;
+}
+
+tbody tr:hover td:not(:first-child){
+    background-color: #d7e1e1;
+}
+
+.imagen-producto{
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+    border-radius: 6px;
+}

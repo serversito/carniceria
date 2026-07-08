@@ -1,0 +1,209 @@
+@font-face {
+    font-family: "Atomicaboy";
+    src: url("/!Resource/Fonts/Atomicaboy.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Ms sans serif";
+    src: url("/!Resource/Fonts/Micross.ttf") format("truetype");
+}
+
+body{
+    background-color: #f1ebd5;
+    font-family: "Ms sans serif";
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header{
+    width: 100%;
+    height: clamp(100px, 12vw, 140px);
+    background-color: #b13935;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo img{
+    height: clamp(80px, 10vw, 120px);
+    width: auto;
+    display: block;
+}
+
+.registro-container{
+    background-color: #FFFFFF;
+    padding: 50px;
+    width: 440px;
+    box-sizing: border-box;
+    border: 3px outset #b9caca;
+    margin-top: 110px;
+    user-select: none;
+}
+
+.formulario-title{
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-size: 25px;
+    text-align: center;
+    color: #0f1218;
+    font-family: "Atomicaboy";
+    letter-spacing: 3px;
+}
+
+.formulario-group{
+    margin-bottom: 26px;
+}
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #4b4e57;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"]{
+    width: 100%;
+    padding: 10px;
+    border: 2px inset #f1ebd5;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #6f7b7e;
+    font-family: "Ms sans serif";
+}
+
+input:focus{
+    outline: none;
+    border-color: #ccdbdb;
+}
+
+.genero-group{
+    padding-top: 4px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.genero-label{
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    margin: 0;
+    font-weight: normal;
+    font-size: 14px;
+    color: #4b4e57;
+}
+
+.boton-register{
+    display: block;
+    width: 75%;
+    padding: 14px;
+    margin: 0 auto;
+    background-color: #b13935;
+    color: #FFFFFF;
+    border: none;
+    font-family: "Ms sans serif";
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.boton-register:hover{
+    background-color: #6b2928;
+}
+
+.message-alt{
+    margin-top: 18px;
+    text-align: center;
+    font-size: 13px;
+    color: #4b4e57;
+}
+
+.message-alt a{
+    color: #b13935;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color .2s;
+}
+
+.message-alt a:hover{
+    color: #6b2928;
+    text-decoration: underline;
+}
+
+.mini-slogan p{
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-family: "Ms sans serif";
+    color: #4b4e57;
+}
+
+.background{
+    position: absolute;
+    top: 120px;      
+    left: 0;
+    width: 100%;
+    height: calc(100% - 140px);
+    z-index: -1;
+}
+
+.bg-svg{
+    position: absolute;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.c1{
+    width: 11vh;
+    left: 7vw;
+    top: 35vh;
+    transform: rotate(-15deg);
+}
+
+.p1{
+    width: 8vh;
+    left: 23vw;
+    top: 25vh;
+    transform: rotate(8deg);
+}
+
+.s1{
+    width: 13vh;
+    left: 14vw;
+    top: 60vh;
+    transform: rotate(-5deg);
+}
+
+.c2{
+    width: 9vh;
+    right: 24vw;
+    top: 78vh;
+    transform: rotate(3deg);
+}
+
+.p2{
+    width: 12vh;
+    right: 10vw;
+    top: 48vh;
+    transform: rotate(-8deg);
+}
+
+.s2{
+    width: 10vh;
+    right: 20vw;
+    top: 24vh;
+    transform: rotate(12deg);
+}

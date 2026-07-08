@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnicería Bella</title>
+    <link rel="icon" type="image/svg+xml" href="/!Resource/Images/Logo-carniceria.svg">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+    <header>
+
+        <div class="logo">
+            <img src="\!Resource\Images\Logo-carniceria.svg">
+        </div>
+
+        <div class="user-info">
+
+            <a href="\User\user.html" class="user-photo">
+                <img src="\!Resource\Images\image 9(11).png" alt="Foto de perfil">
+            </a>
+
+            <div class="user-text">
+                <a href="\User\user.html">Puerkin</a>
+                <span class="user-role">Administrador</span>
+            </div>
+        </div>
+
+    </header>
+
+    <nav class="menu-container">
+        <div class="category-group">
+            <button class="menu-btn" onclick="toggleMenu()">
+                ☰
+            </button>
+
+            <span>Categorías</span>
+
+            <div class="lateral-group" id="menu-lateral">
+                <a href="\Categories\categoria-carne.html">Carne</a>
+                <a href="\Categories\categoria-despensa.html">Despensa</a>
+                <a href="\Categories\categoria-embutidos.html">Embutidos</a>
+                <a href="\Categories\categoria-frutas-verduras.html">Frutas y verduras</a>
+            </div>
+
+        </div>
+
+        <ul>
+            <button class="add-product-btn" onclick="toggleRegistro()">
+                + Agregar producto
+            </button>
+        </ul>
+
+    </nav>
+
+    <div id="overlay"></div>
+
+    <main>
+        <section class="productos">
+            <h2>Inventario de productos</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Caducidad</th>
+                        <th>Descripción</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+
+                <tbody id="tabla-productos">
+
+                    <tr>
+                        <td><img src="\!Resource\Images\placeholder.jpg" class="imagen-producto"></td>
+                        <td>Carne de res</td>
+                        <td> 10 kg</td>
+                        <td>$100</td>
+                        <td>2026-07-14</td>
+                        <td>corte picaña, marmoleado ligereo, primer refrigerador</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </section>
+    </main>
+
+    <div id="record-producto" class="registro">
+
+        <div class="registro-content">
+
+            <h2>Nuevo Producto</h2>
+
+            <input type="text" id="prod-id" placeholder="ID">
+
+            <input type="text" id="prod-nombre" placeholder="Nombre">
+
+            <input type="text" id="prod-cantidad" placeholder="Cantidad">
+
+            <input type="text" id="prod-precio" placeholder="Precio">
+
+            <input type="date" id="prod-caducidad">
+
+            <input type="text" id="prod-proveedor" placeholder="Proveedor">
+            
+            <input type="text" id="prod-categoria" placeholder="Categoría">
+
+            <textarea
+                id="prod-descripcion"
+                placeholder="Descripción">
+            </textarea>
+
+            <div class="registro-buttons">
+
+                <button onclick="closeRegistro()">
+                    Cancelar
+                </button>
+
+                <button onclick="saveProducto()">
+                    Guardar
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="home.js"></script>
+
+</body>
+</html>
