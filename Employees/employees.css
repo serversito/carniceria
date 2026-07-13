@@ -209,7 +209,7 @@ main{
     padding: 40px 90px;
 }
 
-.productos h2{
+.table-empleados h2{
     color: #b13935;
     font-family: "Atomicaboy";
     letter-spacing: 2px;
@@ -246,13 +246,20 @@ td{
     text-align: center;
 }
 
+.tabla-foto-perfil {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #cfc6b9;
+    display: block;
+    margin: 0 auto;
+}
 
 tbody tr:hover td:not(:first-child){
     background-color: #d7e1e1;
 }
 
-
 .btn-borrar:hover {
     transform: scale(1.15);
 }
-

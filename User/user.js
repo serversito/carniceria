@@ -17,6 +17,14 @@ function renderizarDatosUsuario() {
     const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
     if (sesionUsuario) {
+
+        const imgPerfil = document.getElementById("foto-perfil");
+        if (sesionUsuario.foto) {
+            imgPerfil.src = sesionUsuario.foto;
+        } else {
+            imgPerfil.src = "/!Resource/Images/Foto-perfil.jpeg";
+        }
+
         document.querySelector(".usuario-container h2").textContent = sesionUsuario.nombre;
         document.querySelector(".user-role").textContent = sesionUsuario.rol;
         document.getElementById("text-nombre").textContent = sesionUsuario.nombre;
@@ -27,6 +35,36 @@ function renderizarDatosUsuario() {
         document.getElementById("text-genero").textContent = sesionUsuario.genero;
     }
 }
+
+function cambiarFotoPerfil(input) {
+    if (input.files && input.files[0]) {
+        const lector = new FileReader();
+
+        lector.onload = function(e) {
+            const cadenaBase64 = e.target.result;
+
+            const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+            if (!sesionUsuario) return;
+
+            sesionUsuario.foto = cadenaBase64;
+            localStorage.setItem("usuarioLogueado", JSON.stringify(sesionUsuario));
+
+            const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            const listaActualizada = listaUsuarios.map(user => {
+                if (user.id === sesionUsuario.id) {
+                    return { ...user, foto: cadenaBase64 };
+                }
+                return user;
+            });
+            localStorage.setItem("usuarios", JSON.stringify(listaActualizada));
+
+            renderizarDatosUsuario();
+        };
+
+        lector.readAsDataURL(input.files[0]);
+    }
+}
+
 
 function conmutarEdicion(propiedad, idCaja, idBoton) {
     const caja = document.getElementById(idCaja);

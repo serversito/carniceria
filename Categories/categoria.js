@@ -5,10 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTabla();
 
     const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+    const fotoMenu = document.getElementById("menu-foto-perfil");
 
     if (sesionUsuario) {
         document.querySelector(".user-text a").textContent = sesionUsuario.nombre;
         document.querySelector(".user-text span").textContent = sesionUsuario.rol;
+        fotoMenu.src = sesionUsuario.foto;
     }
 });
 

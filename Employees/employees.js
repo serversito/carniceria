@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarTablaEmpleados();
 
     const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+    const fotoMenu = document.getElementById("menu-foto-perfil");
     
     if (sesionUsuario) {
         document.querySelector(".user-text a").textContent = sesionUsuario.nombre;
         document.querySelector(".user-text span").textContent = sesionUsuario.rol;
+        fotoMenu.src = sesionUsuario.foto;
     }
 });
 
@@ -13,18 +15,23 @@ function actualizarTablaEmpleados() {
     const tabla = document.getElementById("tabla-empleados");
     if (!tabla) return;
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || []; 
     tabla.innerHTML = "";
 
     if (usuarios.length === 0) {
-        tabla.innerHTML = `<tr><td colspan="7" style="text-align:center;">No hay empleados registrados en el sistema.</td></tr>`;
+        tabla.innerHTML = `<tr><td colspan="8" style="text-align:center;">No hay empleados registrados en el sistema.</td></tr>`;
         return;
     }
 
     usuarios.forEach((user) => {
+
+        const rutaFoto = user.foto ? user.foto : "/!Resource/Images/Foto-perfil.jpeg";
+
         tabla.innerHTML += `
             <tr>
+                <td style="text-align: center; vertical-align: middle;">
+                    <img src="${rutaFoto}" alt="Perfil" class="tabla-foto-perfil">
+                </td>
                 <td>${user.id}</td>
                 <td>${user.nombre} ${user.apellido}</td>
                 <td>${user.correo}</td>

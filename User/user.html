@@ -24,8 +24,12 @@
     <div class="visuales-container">
 
         <div class="usuario-container">
-
-            <img src="\!Resource\Images\Foto-perfil.jpeg" alt="user-info">
+            <label for="input-foto" class="foto-perfil-label" title="Haz clic para cambiar tu foto de perfil">
+                <img id="foto-perfil" src="/!Resource/Images/Foto-perfil.jpeg" alt="user-info">
+                <div class="overlay-editar">Cambiar Foto</div>
+            </label>
+            <input type="file" id="input-foto" accept="image/*" style="display: none;" onchange="cambiarFotoPerfil(this)">
+            
             <h2>usuario</h2>
             <span class="user-role">rol</span>
         </div>
