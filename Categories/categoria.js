@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("inventario", JSON.stringify(productosIniciales));
     }
     updateTabla();
+
+    const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+    if (sesionUsuario) {
+        document.querySelector(".user-text a").textContent = sesionUsuario.nombre;
+        document.querySelector(".user-text span").textContent = sesionUsuario.rol;
+    }
 });
 
 function updateTabla() {
@@ -59,3 +66,13 @@ function eliminarProducto(index) {
         actualizarTabla();
     }
 }
+
+function toggleMenu(){
+    document.getElementById("menu-lateral").classList.toggle("activo");
+    document.getElementById("overlay").classList.toggle("activo");
+}
+
+document.getElementById("overlay").addEventListener("click", function(){
+    document.getElementById("menu-lateral").classList.remove("activo");
+    this.classList.remove("activo");
+});

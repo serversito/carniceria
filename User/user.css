@@ -39,7 +39,7 @@ header{
     width:170px;
     height:170px;
     object-fit:cover;
-    border:4px solid #d7e1e1;
+    border:5px solid #b13935;
     border-radius: 12px;
     transition:.2s;
 }
@@ -53,13 +53,14 @@ header{
 }
 
 .user-role{
-    padding:4px 12px;
+    padding:8px 12px;
     background:#6b8e8a;
     color:#FFFFFF;
     border-radius:20px;
-    font-size:11px;
+    font-size:15px;
     font-weight:bold;
     text-transform:uppercase;
+    font-family: "Ms sans serif";
     letter-spacing:1px;
 }
 
@@ -104,43 +105,59 @@ main{
     width: 410px;
     box-sizing: border-box;
     border: 3px solid #b9caca;
-    user-select: none;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.info-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:18px;
+.info-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 228px;
+    margin-bottom: 18px;
 }
 
-.btn-editar{
+.btn-editar {
     background: transparent;
     border: none;
     cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 45%;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
-.btn-editar img{
-    width:46px;
-    height:46px;
+.btn-editar img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.1s ease;
 }
 
-.inf-caja{
-    margin-top:8px;
-    margin-bottom:18px;
-    padding:10px 12px;
-    width: 200px;
-    background:#f7f7f7;
-    border:2px solid #d7e1e1;
-    color:#6f7b7e;
-    font-size:14px;
+.btn-editar:hover img {
+    transform: scale(1.15);
+}
 
+.inf-caja {
+    margin-top: 8px;
+    margin-bottom: 18px;
+    padding: 10px 40px 10px 12px;
+    width: 100%;
+    background: #f7f7f7;
+    border: 2px solid #d7e1e1;
+    color: #6f7b7e;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.inf-caja.en-edicion {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .data-group label{
@@ -184,18 +201,20 @@ main{
     left: 0;
     width: 100%;
     height: calc(100% - 140px);
+    pointer-events: none;
 }
 
 .bg-svg{
     position: absolute;
     opacity: 0.18;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .c1{
     width: 11vh;
     left: 7vw;
-    top: 35vh;
+    top: 85vh;
     transform: rotate(-15deg);
 }
 
@@ -209,27 +228,27 @@ main{
 .s1{
     width: 13vh;
     left: 14vw;
-    top: 60vh;
+    top: 140vh;
     transform: rotate(-5deg);
 }
 
 .c2{
     width: 9vh;
     right: 24vw;
-    top: 78vh;
+    top: 128vh;
     transform: rotate(3deg);
 }
 
 .p2{
     width: 12vh;
     right: 10vw;
-    top: 48vh;
+    top: 98vh;
     transform: rotate(-8deg);
 }
 
 .s2{
     width: 10vh;
     right: 20vw;
-    top: 24vh;
+    top: 38vh;
     transform: rotate(12deg);
 }

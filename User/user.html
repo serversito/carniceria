@@ -26,48 +26,57 @@
         <div class="usuario-container">
 
             <img src="\!Resource\Images\Foto-perfil.jpeg" alt="user-info">
-            <h2>Puerkin</h2>
-            <span class="user-role">Administrador</span>
+            <h2>usuario</h2>
+            <span class="user-role">rol</span>
         </div>
 
         <div class="datos-container">
-
             <div class="data-group">
 
                 <label>Nombre de empleado :</label>
                 <div class="info-row">
                     <div class="inf-caja" id="text-nombre">Puerkin</div>
-
+                    <button class="btn-editar" id="btn-nombre" onclick="conmutarEdicion('nombre', 'text-nombre', 'btn-nombre')">
+                        <img src="/!Resource/Images/icono-editar.png" alt="Editar">
+                    </button>
                 </div>
 
                 <label>Apellido de empleado :</label>
                 <div class="info-row">
                     <div class="inf-caja" id="text-apellido">Black</div>
-
+                    <button class="btn-editar" id="btn-apellido" onclick="conmutarEdicion('apellido', 'text-apellido', 'btn-apellido')">
+                        <img src="/!Resource/Images/icono-editar.png" alt="Editar">
+                    </button>
                 </div>
 
                 <label>ID de empleado :</label>
                 <div class="info-row">
+                    <!-- El ID permanece siempre bloqueado -->
                     <div class="inf-caja" id="text-id">12418</div>
-
                 </div>
 
                 <label>Fecha de nacimiento :</label>
                 <div class="info-row">
                     <div class="inf-caja" id="date-nacimiento">2000-01-01</div>
-
+                    <button class="btn-editar" id="btn-nacimiento" onclick="conmutarEdicion('nacimiento', 'date-nacimiento', 'btn-nacimiento')">
+                        <img src="/!Resource/Images/icono-editar.png" alt="Editar">
+                    </button>
                 </div>
 
                 <label>Correo electrónico :</label>
                 <div class="info-row">
-                    <div class="inf-caja" id="text-nombre">ejemplo.admin@gmail.com</div>
-
+                    <div class="inf-caja" id="text-correo">ejemplo.admin@gmail.com</div>
+                    <button class="btn-editar" id="btn-correo" onclick="conmutarEdicion('correo', 'text-correo', 'btn-correo')">
+                        <img src="/!Resource/Images/icono-editar.png" alt="Editar">
+                    </button>
                 </div>
 
-                <label>Genero :</label>
+                <label>Género :</label>
                 <div class="info-row">
-                    <div class="inf-caja">Masculino</div>
-
+                    <div class="inf-caja" id="text-genero">Masculino</div>
+                    <button class="btn-editar" id="btn-genero" onclick="conmutarEdicion('genero', 'text-genero', 'btn-genero')">
+                        <img src="/!Resource/Images/icono-editar.png" alt="Editar">
+                    </button>
                 </div>
                 
             </div>

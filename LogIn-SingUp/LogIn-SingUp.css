@@ -27,6 +27,15 @@ header{
     position: relative;
 }
 
+.visuales-container{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:50px;
+}
+
+
 .logo{
     position: absolute;
     left: 50%;
@@ -47,6 +56,8 @@ header{
     border: 3px outset #b9caca;
     margin-top: 110px;
     user-select: none;
+    position: relative;
+    z-index: 10;
 }
 
 .formulario-title{
@@ -156,7 +167,7 @@ input:focus{
     left: 0;
     width: 100%;
     height: calc(100% - 140px);
-    z-index: 1;
+    pointer-events: none;
 }
 
 .bg-svg{
@@ -164,6 +175,7 @@ input:focus{
     opacity: 0.18;
     z-index: 1;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .c1{

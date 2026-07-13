@@ -127,7 +127,7 @@ header{
 .category-group span{
     font-family: "Youthan";
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: 25px;
     color: #FFFFFF;
     user-select: none;
 }
@@ -186,6 +186,17 @@ header{
     padding-left: 35px;
 }
 
+.lateral-group span{
+    font-family: "Youthan";
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: #FFFFFF;
+    user-select: none;
+    text-decoration: none;
+    padding: 15px 60px;
+    border-top: 4px solid rgba(255,255,255,.2);
+}
+
 main{
     padding: 40px 90px;
 }
@@ -225,6 +236,7 @@ td{
     font-family: "Ms sans serif";
     font-weight: bold;
     color: #757575;
+    text-align: center;
 }
 
 tbody tr:hover td:not(:first-child){

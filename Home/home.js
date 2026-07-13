@@ -1,3 +1,17 @@
+document.addEventListener("DOMContentLoaded", () => {    
+    if (!localStorage.getItem("inventario")) {
+        localStorage.setItem("inventario", JSON.stringify(productosIniciales));
+    }
+    updateTabla();
+
+    const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+
+    if (sesionUsuario) {
+        document.querySelector(".user-text a").textContent = sesionUsuario.nombre;
+        document.querySelector(".user-text span").textContent = sesionUsuario.rol;
+    }
+});
+
 function toggleMenu(){
     document.getElementById("menu-lateral").classList.toggle("activo");
     document.getElementById("overlay").classList.toggle("activo");
@@ -74,13 +88,6 @@ const productosIniciales = [
         categoria: "Embutidos"
     }
 ];
-
-document.addEventListener("DOMContentLoaded", () => {
-    if (!localStorage.getItem("inventario")) {
-        localStorage.setItem("inventario", JSON.stringify(productosIniciales));
-    }
-    updateTabla();
-});
 
 function updateTabla() {
     const tabla = document.getElementById("tabla-productos");

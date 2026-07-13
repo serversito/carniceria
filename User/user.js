@@ -9,17 +9,67 @@ function reproducirSonido(animal) {
     });
 }
 
-function editarCampo(id){
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarDatosUsuario();
+});
 
-    const campo = document.getElementById(id);
+function renderizarDatosUsuario() {
+    const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
 
-    const valor = prompt(
-        "Nuevo valor:",
-        campo.textContent
-    );
+    if (sesionUsuario) {
+        document.querySelector(".usuario-container h2").textContent = sesionUsuario.nombre;
+        document.querySelector(".user-role").textContent = sesionUsuario.rol;
+        document.getElementById("text-nombre").textContent = sesionUsuario.nombre;
+        document.getElementById("text-apellido").textContent = sesionUsuario.apellido;
+        document.getElementById("text-id").textContent = sesionUsuario.id;
+        document.getElementById("date-nacimiento").textContent = sesionUsuario.nacimiento;
+        document.getElementById("text-correo").textContent = sesionUsuario.correo;
+        document.getElementById("text-genero").textContent = sesionUsuario.genero;
+    }
+}
 
-    if(valor !== null && valor.trim() !== ""){
+function conmutarEdicion(propiedad, idCaja, idBoton) {
+    const caja = document.getElementById(idCaja);
+    const boton = document.getElementById(idBoton);
+    const icono = boton.querySelector("img");
 
-        campo.textContent = valor;
+    if (caja.getAttribute("contenteditable") !== "true") {
+
+        caja.setAttribute("contenteditable", "true");
+        caja.classList.add("en-edicion");
+        caja.focus();
+        icono.src = "/!Resource/Images/icono-guardar.png"
+        
+    } else {
+        
+        const nuevoValor = caja.textContent.trim();
+
+        if (nuevoValor === "") {
+            alert("El campo no puede quedar completamente vacío.");
+            renderizarDatosUsuario();
+            return;
+        }
+
+        const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+        if (!sesionUsuario) return;
+
+        sesionUsuario[propiedad] = nuevoValor;
+        localStorage.setItem("usuarioLogueado", JSON.stringify(sesionUsuario));
+
+        const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        const listaActualizada = listaUsuarios.map(user => {
+            if (user.id === sesionUsuario.id) {
+                return { ...user, [propiedad]: nuevoValor };
+            }
+            return user;
+        });
+        localStorage.setItem("usuarios", JSON.stringify(listaActualizada));
+
+        caja.setAttribute("contenteditable", "false");
+        caja.classList.remove("en-edicion");
+
+        icono.src = "/!Resource/Images/icono-editar.png";
+
+        renderizarDatosUsuario();
     }
 }
