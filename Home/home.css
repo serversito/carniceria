@@ -395,3 +395,172 @@ input:focus{
     box-sizing: border-box !important;
     width: 100%;
 }
+
+.detalles-card-content {
+    background-color: #f1ebd5;
+    width: 600px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    border: 1px solid #cfc6b9;
+}
+
+.detalles-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.detalles-card-header h2 {
+    margin: 0;
+    font-family: "Youthan";
+    font-size: 32px;
+    color: #000000;
+}
+.btn-volver-inventario {
+    background: transparent;
+    border: none;
+    color: #757575;
+    font-family: "Ms sans serif";
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-volver-inventario:hover {
+    color: #b13935;
+}
+
+.detalles-img-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.detalles-img-container img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px;
+    background-color: #cfc6b9;
+    padding: 4px;
+}
+
+.detalles-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.badge-categoria-tag {
+    background-color: #cfc6b9;
+    color: #000000;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: "Ms sans serif";
+    font-weight: bold;
+}
+.detalles-acciones-rapidas {
+    display: flex;
+    gap: 8px;
+}
+.btn-accion-mock {
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-accion-mock.btn-rojo-mock:hover {
+    border-color: #b13935;
+}
+
+.detalles-grid-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.campo-det.full-width {
+    grid-column: span 3;
+    margin-top: 5px;
+}
+
+.campo-det {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo-det label {
+    font-size: 15px;
+    color: #757575;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+.campo-det input {
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: "Ms sans serif";
+    font-size: 14px;
+    color: #000000;
+    outline: none;
+}
+.campo-det textarea {
+    background-color: #FFFFFF;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: "Ms sans serif";
+    font-size: 14px;
+    color: #000000;
+    resize: none;
+    height: 80px;
+    outline: none;
+}
+
+.banner-caducidad-alerta {
+    background-color: #ebdcd0;
+    border: 1px solid #d4b8a3;
+    border-radius: 6px;
+    padding: 12px;
+    color: #b13935;
+    font-family: "Ms sans serif";
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.campo-det input[readonly], 
+.campo-det textarea[readonly] {
+    cursor: default;
+    background-color: #fcfaf3;
+}
+
+.detalles-card-content.modo-editor .campo-det input:not([readonly]),
+.detalles-card-content.modo-editor .campo-det textarea:not([readonly]),
+.detalles-card-content.modo-editor .campo-det select {
+    cursor: text;
+    background-color: #FFFFFF;
+    border: 1px solid #6b8e8a;
+}
+
+.campo-det select {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: "Ms sans serif";
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer !important;
+    outline: none;
+}

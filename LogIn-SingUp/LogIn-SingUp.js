@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const nombreInput = document.getElementById("login-nombre").value.trim();
             const apellidoInput = document.getElementById("login-apellido").value.trim();
             const idInput = document.getElementById("login-id").value.trim();
-
             const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
             const usuarioValidado = usuarios.find(user => 

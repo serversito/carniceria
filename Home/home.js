@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sesionUsuario) {
         document.querySelector(".user-text a").textContent = sesionUsuario.nombre;
         document.querySelector(".user-text span").textContent = sesionUsuario.rol;
-        fotoMenu.src = sesionUsuario.foto;
+        if (sesionUsuario.foto && fotoMenu) {
+            fotoMenu.src = sesionUsuario.foto; 
+        }
     }
 });
 
@@ -22,6 +24,7 @@ function toggleMenu(){
 document.getElementById("overlay").addEventListener("click", function(){
     document.getElementById("menu-lateral").classList.remove("activo");
     this.classList.remove("activo");
+    document.getElementById("detalle-producto").style.display = "none";
 });
 
 function toggleRegistro(){
@@ -99,23 +102,146 @@ function updateTabla() {
 
     productos.forEach((prod, index) => {
         const imgSrc = prod.imagen || "\\!Resource\\Images\\placeholder-1.jpg";
-        
-        tabla.innerHTML += `
-            <tr>
-                <td><img src="${imgSrc}" class="imagen-producto"></td>
-                <td>${prod.nombre}</td>
-                <td>${prod.cantidad}</td>
-                <td>${prod.precio.startsWith('$') ? prod.precio : '$' + prod.precio}</td>
-                <td>${prod.caducidad}</td>
-                <td>${prod.descripcion}</td>
-                <td>
-                    <button class="btn-borrar" onclick="eliminarProducto(${index})" title="Eliminar Producto">
-                        <img src="\\!Resource\\Images\\icono-borrar.png" class="icono-borrar" alt="Borrar">
-                    </button>
-                </td>
-            </tr>
+
+        const fila = document.createElement("tr");
+        fila.style.cursor = "pointer";
+
+        fila.innerHTML = `
+            <td><img src="${imgSrc}" class="imagen-producto"></td>
+            <td>${prod.nombre}</td>
+            <td>${prod.cantidad}</td>
+            <td>${prod.precio.startsWith('$') ? prod.precio : '$' + prod.precio}</td>
+            <td>${prod.caducidad}</td>
+            <td>${prod.descripcion}</td>
+            <td>
+                <button class="btn-borrar" title="Eliminar Producto">
+                    <img src="\\!Resource\\Images\\icono-borrar.png" class="icono-borrar" alt="Borrar">
+                </button>
+            </td>
         `;
+
+        fila.querySelectorAll("td:not(:last-child)").forEach(celda => {
+            celda.addEventListener("click", () => {
+                mostrarDetallesProducto(prod.id);
+            });
+        });
+
+        fila.querySelector(".btn-borrar").addEventListener("click", (e) => {
+            e.stopPropagation();
+            eliminarProducto(index);
+        });
+
+        tabla.appendChild(fila);
     });
+}
+
+function mostrarDetallesProducto(idProducto) {
+    const productos = JSON.parse(localStorage.getItem("inventario")) || [];
+    const prod = productos.find(p => p.id === idProducto);
+
+    if (!prod) return;
+
+    const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+    const esAdministrador = sesionUsuario && sesionUsuario.rol.toLowerCase() === "administrador";
+    const tarjeta = document.querySelector(".detalles-card-content");
+    const contenedorGuardar = document.getElementById("det-contenedor-guardar");
+    const inputCat = document.getElementById("det-categoria-input");
+    const selectCat = document.getElementById("det-categoria-select");
+
+    document.getElementById("det-id-oculto").value = prod.id;
+    document.getElementById("det-imagen").src = prod.imagen || "\\!Resource\\Images\\placeholder-1.jpg";
+    document.getElementById("det-nombre").value = prod.nombre;
+    document.getElementById("det-proveedor").value = prod.proveedor || "no especificado/independiente";
+    document.getElementById("det-cantidad").value = prod.cantidad;
+    document.getElementById("det-descripcion").value = prod.descripcion || "";
+
+    let precioLimpio = prod.precio.replace('$', '').trim();
+    document.getElementById("det-precio").value = esAdministrador ? precioLimpio : '$' + precioLimpio;
+
+    if (prod.caducidad) {
+        if (esAdministrador) {
+            document.getElementById("det-caducidad").value = prod.caducidad;
+        } else {
+            const partesFecha = prod.caducidad.split("-");
+            document.getElementById("det-caducidad").value = partesFecha.length === 3 ? `${partesFecha[2]}/${partesFecha[1]}/${partesFecha[0]}` : prod.caducidad;
+        }
+    } else {
+        document.getElementById("det-caducidad").value = esAdministrador ? "" : "No registra";
+    }
+
+    const camposEditables = ["det-nombre", "det-proveedor", "det-cantidad", "det-precio", "det-caducidad", "det-descripcion"];
+
+    if (esAdministrador) {
+        camposEditables.forEach(id => document.getElementById(id).removeAttribute("readonly"));
+        
+        document.getElementById("det-caducidad").onfocus = function() { this.type = 'date'; };
+        document.getElementById("det-caducidad").onblur = function() { if(!this.value) this.type = 'text'; };
+
+        inputCat.style.display = "none";
+        selectCat.style.display = "block";
+        selectCat.value = prod.categoria;
+
+        tarjeta.classList.add("modo-editor");
+        contenedorGuardar.style.display = "block";
+    } else {
+
+        camposEditables.forEach(id => document.getElementById(id).setAttribute("readonly", "true"));
+        document.getElementById("det-caducidad").onfocus = null;
+        document.getElementById("det-caducidad").onblur = null;
+        document.getElementById("det-caducidad").type = "text";
+
+        inputCat.style.display = "block";
+        selectCat.style.display = "none";
+        inputCat.value = prod.categoria;
+        tarjeta.classList.remove("modo-editor");
+        contenedorGuardar.style.display = "none";
+    }
+
+    document.getElementById("detalle-producto").style.display = "flex";
+    document.getElementById("overlay").classList.add("activo");
+}
+
+function guardarEdicionProducto() {
+    const idTarget = document.getElementById("det-id-oculto").value;
+    const productos = JSON.parse(localStorage.getItem("inventario")) || [];
+
+    const index = productos.findIndex(p => p.id === idTarget);
+
+    if (index === -1) {
+        alert("Error al intentar actualizar: El producto ya no existe.");
+        return;
+    }
+
+    const nombre = document.getElementById("det-nombre").value.trim();
+    const proveedor = document.getElementById("det-proveedor").value.trim() || "no especificado/independiente";
+    const categoria = document.getElementById("det-categoria-select").value;
+    const cantidad = document.getElementById("det-cantidad").value.trim();
+    const precio = document.getElementById("det-precio").value.trim();
+    const caducidad = document.getElementById("det-caducidad").value;
+    const descripcion = document.getElementById("det-descripcion").value;
+
+    if (!nombre || !cantidad || !precio || !caducidad) {
+        alert("Error: El Nombre, Cantidad, Precio y Fecha de caducidad no pueden guardarse vacíos.");
+        return;
+    }
+
+    productos[index].nombre = nombre;
+    productos[index].proveedor = proveedor;
+    productos[index].categoria = categoria;
+    productos[index].cantidad = cantidad;
+    productos[index].precio = precio.startsWith('$') ? precio : '$' + precio;
+    productos[index].caducidad = caducidad;
+    productos[index].descripcion = descripcion;
+
+    localStorage.setItem("inventario", JSON.stringify(productos));
+
+    updateTabla();
+    closeDetalle();
+}
+
+function closeDetalle() {
+    document.getElementById("detalle-producto").style.display = "none";
+    document.getElementById("overlay").classList.remove("activo");
 }
 
 function saveProducto(){
@@ -193,6 +319,6 @@ function eliminarProducto(index) {
         
         localStorage.setItem("inventario", JSON.stringify(nuevoArregloMaestro));
         
-        actualizarTabla();
+        updateTabla();
     }
 }

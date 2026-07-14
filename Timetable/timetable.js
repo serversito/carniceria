@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".user-text a").textContent = sesionUsuario.nombre;
         document.querySelector(".user-text span").textContent = sesionUsuario.rol;
         if (sesionUsuario.foto && fotoMenu) {
-            fotoMenu.src = sesionUsuario.foto;
+            fotoMenu.src = sesionUsuario.foto; 
         }
     }
 });

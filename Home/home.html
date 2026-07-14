@@ -132,6 +132,71 @@
 
     </div>
 
+    <div id="detalle-producto" class="registro">
+        <div class="detalles-card-content">
+            
+            <div class="detalles-card-header">
+                <h2>Detalles de producto</h2>
+                <button class="btn-volver-inventario" onclick="closeDetalle()">
+                    ← Volver al inventario
+                </button>
+            </div>
+
+            <div class="detalles-img-container">
+                <img id="det-imagen" src="" alt="Producto">
+            </div>
+
+            <input type="hidden" id="det-id-oculto">
+
+            <div class="detalles-grid-inputs">
+                <div class="campo-det">
+                    <label>Nombre del producto</label>
+                    <input type="text" id="det-nombre" readonly>
+                </div>
+                <div class="campo-det">
+                    <label>Proveedor</label>
+                    <input type="text" id="det-proveedor" readonly>
+                </div>
+                
+                <div class="campo-det">
+                    <label>Categoría asignada</label>
+                    <input type="text" id="det-categoria-input" readonly>
+                    <select id="det-categoria-select" style="display: none;">
+                        <option value="Carne">Carne</option>
+                        <option value="Despensa">Despensa</option>
+                        <option value="Embutidos">Embutidos</option>
+                        <option value="Frutas y verduras">Frutas y verduras</option>
+                    </select>
+                </div>
+
+                <div class="campo-det">
+                    <label>Cantidad en Stock</label>
+                    <input type="text" id="det-cantidad" readonly>
+                </div>
+                <div class="campo-det">
+                    <label>Precio Unitario</label>
+                    <input type="text" id="det-precio" readonly>
+                </div>
+                <div class="campo-det">
+                    <label>Fecha de Caducidad</label>
+                    <input type="text" id="det-caducidad" readonly>
+                </div>
+            </div>
+
+            <div class="campo-det full-width">
+                <label>Descripción / Ubicación de almacén</label>
+                <textarea id="det-descripcion" readonly></textarea>
+            </div>
+
+            <div class="registro-buttons" id="det-contenedor-guardar" style="display: none; margin-top: 10px;">
+                <button onclick="guardarEdicionProducto()" style="background-color: #6b8e8a; width: 100%; padding: 10px;">
+                    Guardar Cambios del Producto
+                </button>
+            </div>
+
+        </div>
+    </div>
+
     <script src="home.js"></script>
 
 </body>

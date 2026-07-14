@@ -65,11 +65,73 @@ function cambiarFotoPerfil(input) {
     }
 }
 
-
 function conmutarEdicion(propiedad, idCaja, idBoton) {
     const caja = document.getElementById(idCaja);
     const boton = document.getElementById(idBoton);
     const icono = boton.querySelector("img");
+
+        if (propiedad === "genero") {
+
+        if (!caja.querySelector("select")) {
+
+            const valorActual = caja.textContent.trim();
+
+            const select = document.createElement("select");
+            select.className = "inf-caja en-edicion";
+
+            ["Masculino", "Femenino"].forEach(opcion => {
+
+                const option = document.createElement("option");
+                option.value = opcion;
+                option.textContent = opcion;
+
+                if (opcion === valorActual) {
+                    option.selected = true;
+                }
+
+                select.appendChild(option);
+
+            });
+
+            caja.innerHTML = "";
+            caja.appendChild(select);
+
+            icono.src = "/!Resource/Images/icono-guardar.png";
+
+            return;
+        }
+
+        const nuevoValor = caja.querySelector("select").value;
+
+        const sesionUsuario = JSON.parse(localStorage.getItem("usuarioLogueado"));
+        if (!sesionUsuario) return;
+
+        sesionUsuario.genero = nuevoValor;
+        localStorage.setItem("usuarioLogueado", JSON.stringify(sesionUsuario));
+
+        const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+        const listaActualizada = listaUsuarios.map(user => {
+
+            if (user.id === sesionUsuario.id) {
+                return {
+                    ...user,
+                    genero: nuevoValor
+                };
+            }
+
+            return user;
+
+        });
+
+        localStorage.setItem("usuarios", JSON.stringify(listaActualizada));
+
+        icono.src = "/!Resource/Images/icono-editar.png";
+
+        renderizarDatosUsuario();
+
+        return;
+    }
 
     if (caja.getAttribute("contenteditable") !== "true") {
 
@@ -78,7 +140,9 @@ function conmutarEdicion(propiedad, idCaja, idBoton) {
         caja.focus();
         icono.src = "/!Resource/Images/icono-guardar.png"
         
-    } else {
+    } 
+    
+    else {
         
         const nuevoValor = caja.textContent.trim();
 
@@ -101,6 +165,9 @@ function conmutarEdicion(propiedad, idCaja, idBoton) {
             }
             return user;
         });
+
+        
+
         localStorage.setItem("usuarios", JSON.stringify(listaActualizada));
 
         caja.setAttribute("contenteditable", "false");
