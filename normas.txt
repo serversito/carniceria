@@ -1,4 +1,11 @@
-    font-family: "Atomicaboy";
-    letter-spacing: 2px;
+se supone que aqui se anotarian las especificaciones para cada tipografia -f
+pero no hay tiempo :,vvvv -f
+
+k -a
+
+papu no -b
+
+font-family: "Atomicaboy";
+letter-spacing: 2px;
 
     

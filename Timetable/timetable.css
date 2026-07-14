@@ -27,6 +27,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 0 50px;
+    z-index: 1100;
 }
 
 .logo img{
@@ -103,7 +104,6 @@ header{
     position: relative;
     z-index: 1100;
 }
-
 
 .menu-container ul{
     list-style: none;
@@ -211,7 +211,7 @@ main{
     padding: 40px 90px;
 }
 
-.table-empleados h2{
+.table-horarios h2{
     color: #b13935;
     font-family: "Atomicaboy";
     letter-spacing: 2px;
@@ -249,8 +249,8 @@ td{
 }
 
 .tabla-foto-perfil {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 10px;
     border: 2px solid #cfc6b9;
@@ -258,10 +258,48 @@ td{
     margin: 0 auto;
 }
 
-tbody tr:hover td:not(:first-child){
-    background-color: #d7e1e1;
-}
-
 .btn-borrar:hover {
     transform: scale(1.15);
+}
+
+.empleado-celda {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.empleado-nombre {
+    font-size: 14px;
+    color: #000000;
+}
+
+.badge-turno {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #FFFFFF;
+    display: inline-block;
+}
+.badge-turno.matutino { background-color: #6b8e8a; }
+.badge-turno.vespertino { background-color: #b13935; }
+.badge-turno.descanso { background-color: #a0a0a0; }
+
+select.select-horario {
+    border: none;
+    font-family: "Ms sans serif";
+    font-weight: bold;
+    text-align: center;
+    text-align-last: center;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select.select-horario option {
+    background-color: #FFFFFF;
+    color: #757575;
 }

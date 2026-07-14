@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carnicería Bella</title>
     <link rel="icon" type="image/svg+xml" href="/!Resource/Images/Logo-carniceria.svg">
-    <link rel="stylesheet" href="categoria.css">
+    <link rel="stylesheet" href="timetable.css">
 </head>
 <body>
 
@@ -36,14 +36,13 @@
                 ☰
             </button>
 
-            <span>Categorías</span>
+            <span>Utilidades</span>
 
             <div class="lateral-group" id="menu-lateral">
-                <a href="\Categories\categoria-carne.html">Carne</a>
-                <a href="\Categories\categoria-embutidos.html">Embutidos</a>
-                <a href="\Categories\categoria-frutas-verduras.html">Frutas y verduras</a>
+                <a href="\Employees\employees.html">Empleados</a>
             </div>
         </div>
+        
 
         <ul>
             <li><a href="\Home\home.html"><img src="\!Resource\Images\Icono-volver.png"></a></li>
@@ -54,32 +53,32 @@
 
     <main>
 
-        <section class="productos">
+        <section class="table-horarios">
 
-            <h2>Inventario de Despensa</h2>
+            <h2>Horarios</h2>
 
             <table>
-
                 <thead>
                     <tr>
-                        <th>Producto</th>
-                        <th>Nombre</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Caducidad</th>
-                        <th>Descripción</th>
-                        <th></th>
-
+                        <th>Empleado</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miercoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sabado</th>
+                        <th>Domingo</th>
                     </tr>
                 </thead>
 
-                <tbody id="tabla-productos" data-categoria="Despensa">
+                <tbody id="tabla-horarios">
 
                 </tbody>
             </table>
         </section>
     </main>
 
-    <script src="categoria.js"></script>
+    <script src="timetable.js"></script>
+
 </body>
 </html>

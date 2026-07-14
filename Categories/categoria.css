@@ -19,6 +19,8 @@ body{
 }
 
 header{
+    position: relative;
+    z-index: 1100;
     height: 120px;
     background-color: #b13935;
     display: flex;
